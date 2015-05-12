@@ -13,4 +13,4 @@ RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["/usr/bin/entrypoint.sh"]
 
 USER mongodb-mms-agent
-CMD ["mongodb-mms-monitoring-agent","-conf","/etc/mongodb-mms/monitoring-agent.config"]
+CMD ["mongodb-mms-monitoring-agent","-config","/etc/mongodb-mms/monitoring-agent.config"]
