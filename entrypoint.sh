@@ -5,10 +5,10 @@ set -e
 : ${MMS_MUNIN:=true}
 : ${MMS_CHECK_SSL_CERTS:=true}
 
-if [ ! "$MMS_API_KEY" ]; then
+if [ ! "$API_KEY" ]; then
 	{
 		echo 'error: MMS_API_KEY was not specified'
-		echo 'try something like: docker run -e MMS_API_KEY=... ...'
+		echo 'try something like: docker run -e API_KEY=... ...'
 		echo '(see https://mms.mongodb.com/settings/monitoring-agent for your mmsApiKey)'
 		echo
 		echo 'Other optional variables:'
@@ -30,7 +30,7 @@ set_config() {
 	sed -ri "s/^($key)[ ]*=.*$/\1 = $sed_escaped_value/" "$config_tmp"
 }
 
-set_config mmsApiKey "$MMS_API_KEY"
+set_config mmsApiKey "$API_KEY"
 set_config mmsBaseUrl "$MMS_SERVER"
 set_config enableMunin "$MMS_MUNIN"
 set_config sslRequireValidServerCertificates "$MMS_CHECK_SSL_CERTS"
